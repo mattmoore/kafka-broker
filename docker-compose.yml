@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  kafka-broker:
+    image: mattmoore/kafka-broker
+    entrypoint: '/docker-entrypoint.sh'
+    environment:
+      - KAFKA_ZOOKEEPER_CONNECT=kafkazookeeper.mattmoore.io:2181
+      - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafkabroker1.mattmoore.io:9092
+      - KAFKA_BROKER_ID=0
+    ports:
+      - '9092:9092'
